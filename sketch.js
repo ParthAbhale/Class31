@@ -1,3 +1,33 @@
+var num=15;
+console.log(num);
+
+var name="parth"
+console.log(name);
+
+var bool=true;
+console.log(bool)
+
+var abc;
+console.log(abc);
+
+abc=null;
+console.log(abc);
+
+var arr=[12,name,"sara",13,45,23]
+console.log(arr);
+
+console.log(arr[2])
+
+var arr1=[[1,2],[3,4],["parth",15],45,"code"]
+console.log(arr1[2][0])
+
+arr1.push(23);
+console.log(arr1)
+
+arr1.pop();
+console.log(arr1)
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +37,8 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gameState = "ONSLING";
+
 
 
 function preload() {
@@ -69,16 +101,19 @@ function draw(){
 }
 
 function mouseDragged(){
+    if (gameState !== "launch"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launch"
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        // slingshot.attach(bird.body);
     }
 }
